@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "ingenieur:block/machine_core_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "ingenieur:block/machine_core"
+    },
+    "axis=z": {
+      "model": "ingenieur:block/machine_core_horizontal",
+      "x": 90
+    }
+  }
+}

@@ -1,8 +1,13 @@
 package com.mike.ingenieur;
 
 import com.mike.ingenieur.block.BlockRegistry;
+import com.mike.ingenieur.block.entity.BlockEntityRegistry;
 import com.mike.ingenieur.item.ItemRegistry;
+import com.mike.ingenieur.screen.MenuTypesRegistry;
+import com.mike.ingenieur.screen.PickaxeSimulatorScreen;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,6 +39,10 @@ public class Ingenieur
 
         ItemRegistry.registerItems(modEventBus);
 
+        BlockEntityRegistry.registerBlockEntities(modEventBus);
+
+        MenuTypesRegistry.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -46,7 +55,7 @@ public class Ingenieur
 
         @SubscribeEvent
         public static void onClientStartup(FMLClientSetupEvent event){
-
+            MenuScreens.register(MenuTypesRegistry.PICKAXE_SIMULATOR_MENU.get(), PickaxeSimulatorScreen::new);
         }
     }
 }

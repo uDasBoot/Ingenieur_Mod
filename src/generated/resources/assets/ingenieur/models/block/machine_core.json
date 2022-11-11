@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ingenieur:block/machine_core_top",
+    "side": "ingenieur:block/machine_core_side"
+  }
+}
