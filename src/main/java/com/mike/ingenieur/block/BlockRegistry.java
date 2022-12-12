@@ -1,6 +1,7 @@
 package com.mike.ingenieur.block;
 
 import com.mike.ingenieur.Ingenieur;
+import com.mike.ingenieur.block.custom.AsteroidMinerBlock;
 import com.mike.ingenieur.block.custom.PickaxeSimulatorBlock;
 import com.mike.ingenieur.item.ItemRegistry;
 import net.minecraft.world.item.BlockItem;
@@ -23,11 +24,13 @@ public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Ingenieur.MODID);
 
     public static final RegistryObject<Block> MACHINE_CORE = registerSimpleBlock("machine_core",
-            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), CreativeModeTab.TAB_MISC);
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), Ingenieur.INGENIEUR_TAB);
 
     public static final RegistryObject<Block> PICKAXE_SIMULATOR = registerSimpleBlock("pickaxe_simulator",
-        () -> new PickaxeSimulatorBlock(BlockBehaviour.Properties.of(Material.AMETHYST)), CreativeModeTab.TAB_MISC);
+        () -> new PickaxeSimulatorBlock(BlockBehaviour.Properties.of(Material.METAL)), Ingenieur.INGENIEUR_TAB);
 
+    public static final RegistryObject<Block> ASTEROID_MINER = registerSimpleBlock("asteroid_miner",
+            () -> new AsteroidMinerBlock(BlockBehaviour.Properties.of(Material.METAL)), Ingenieur.INGENIEUR_TAB);
     private static <T extends Block> RegistryObject<T> registerSimpleBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn, tab);

@@ -10,6 +10,8 @@ public class ModBlockLootTables extends BlockLoot {
     @Override
     protected void addTables() {
         this.dropSelf(BlockRegistry.MACHINE_CORE.get());
+        this.dropSelf(BlockRegistry.PICKAXE_SIMULATOR.get());
+        this.dropSelf(BlockRegistry.ASTEROID_MINER.get());
     }
 
     @Override

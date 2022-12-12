@@ -1,4 +1,8 @@
 {
   "item.ingenieur.machine_controller": "Machine Controller",
-  "block.ingenieur.machine_core": "Machine Core"
+  "item.ingenieur.miner_drone": "Miner Drone",
+
+  "block.ingenieur.machine_core": "Machine Core",
+  "block.ingenieur.pickaxe_simulator": "Pickaxe Simulator",
+  "block.ingenieur.asteroid_miner": "Asteroid Miner"
 }

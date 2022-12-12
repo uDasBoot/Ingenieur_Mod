@@ -2,7 +2,6 @@ package com.mike.ingenieur.block.entity;
 
 import com.mike.ingenieur.Ingenieur;
 import com.mike.ingenieur.block.BlockRegistry;
-import com.mike.ingenieur.block.custom.PickaxeSimulatorBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,6 +17,11 @@ public class BlockEntityRegistry {
             BLOCK_ENTITIES.register("pickaxe_simulator", () ->
                     BlockEntityType.Builder.of(PickaxeSimulatorBlockEntity::new,
                             BlockRegistry.PICKAXE_SIMULATOR.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<AsteroidMinerBlockEntity>> ASTEROID_MINER =
+            BLOCK_ENTITIES.register("asteroid_miner", () ->
+                    BlockEntityType.Builder.of(AsteroidMinerBlockEntity::new,
+                            BlockRegistry.ASTEROID_MINER.get()).build(null));
 
 
     public static void registerBlockEntities(IEventBus modEventBus){

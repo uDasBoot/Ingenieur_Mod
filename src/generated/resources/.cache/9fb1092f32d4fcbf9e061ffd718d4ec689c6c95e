@@ -1,5 +1,7 @@
-// 1.19.2	2022-10-23T15:41:11.9075323	Recipes
+// 1.19.2	2022-11-10T23:18:11.4616675	Recipes
 3dbc184f18f02361b178bdfb6e6868be84eaac95 data/ingenieur/advancements/recipes/misc/machine_core.json
+899ff288693817d4c59f104fb81e158de4eef056 data/ingenieur/advancements/recipes/misc/pickaxe_simulator.json
 947f87db70eafd331998f88537a228490352f5e9 data/ingenieur/advancements/recipes/redstone/machine_controller.json
 0e2553691081e8eeca089b07a0d320748728dde2 data/ingenieur/recipes/machine_controller.json
 c33ea03ae35d6245721c5fc8423aaa397cc0d9bc data/ingenieur/recipes/machine_core.json
+a317c812e4f522cdcc13246385e8d4830d502a2d data/ingenieur/recipes/pickaxe_simulator.json

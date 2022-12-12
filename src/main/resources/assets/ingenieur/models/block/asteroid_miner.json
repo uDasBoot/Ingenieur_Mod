@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "ingenieur:block/asteroid_miner",
+    "front": "minecraft:block/iron_block",
+    "side": "minecraft:block/iron_block"
+  }
+}

@@ -20,7 +20,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
-        ShapedRecipeBuilder.shaped(ItemRegistry.machine_controller.get())
+        ShapedRecipeBuilder.shaped(ItemRegistry.MACHINE_CONTROLLER.get())
                 .define('G', Tags.Items.DYES_GREEN).define('C', Tags.Items.INGOTS_COPPER)
                 .define('R', Tags.Items.DUSTS_REDSTONE).define('T', Items.REDSTONE_TORCH)
                 .pattern("GGG")
@@ -29,11 +29,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .of(Items.REDSTONE).build())).save(pFinishedRecipeConsumer);
 
         ShapedRecipeBuilder.shaped(BlockRegistry.MACHINE_CORE.get())
-                .define('M', ItemRegistry.machine_controller.get())
+                .define('M', ItemRegistry.MACHINE_CONTROLLER.get())
                 .define('I', Tags.Items.INGOTS_IRON)
                 .pattern("III")
                 .pattern("IMI")
                 .pattern("III").unlockedBy("has_machine_controller", inventoryTrigger(ItemPredicate.Builder.item()
-                        .of(ItemRegistry.machine_controller.get()).build())).save(pFinishedRecipeConsumer);
+                        .of(ItemRegistry.MACHINE_CONTROLLER.get()).build())).save(pFinishedRecipeConsumer);
+
+        ShapedRecipeBuilder.shaped(BlockRegistry.PICKAXE_SIMULATOR.get())
+                .define('M', BlockRegistry.MACHINE_CORE.get())
+                .define('R', Items.REDSTONE)
+                .define('I', Tags.Items.INGOTS_IRON)
+                .define('P', Tags.Items.TOOLS_PICKAXES)
+                .pattern("IPI")
+                .pattern("IMI")
+                .pattern("RRR").unlockedBy("has_machine_core", inventoryTrigger(ItemPredicate.Builder.item()
+                        .of(BlockRegistry.MACHINE_CORE.get()).build())).save(pFinishedRecipeConsumer);
     }
 }

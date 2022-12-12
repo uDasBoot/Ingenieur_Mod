@@ -13,14 +13,14 @@ import net.minecraft.world.entity.player.Inventory;
 
 import java.util.Optional;
 
-public class PickaxeSimulatorScreen extends AbstractContainerScreen<PickaxeSimulatorMenu> {
+public class AsteroidMinerScreen extends AbstractContainerScreen<AsteroidMinerMenu> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(Ingenieur.MODID,
-            "textures/gui/pickaxe_simulator.png");
+            "textures/gui/asteroid_miner.png");
 
     public EnergyInfoArea energyInfoArea;
 
-    public PickaxeSimulatorScreen(PickaxeSimulatorMenu menu, Inventory inv, Component component) {
+    public AsteroidMinerScreen(AsteroidMinerMenu menu, Inventory inv, Component component) {
         super(menu, inv, component);
     }
 
@@ -46,7 +46,7 @@ public class PickaxeSimulatorScreen extends AbstractContainerScreen<PickaxeSimul
 
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
         if(menu.isMining()) {
-            blit(pPoseStack, x + 43, y + 35, 176, 14, menu.getScaledProgress(), 17);
+            blit(pPoseStack, x + 35, y + 35, 176, 14, menu.getScaledProgress(), 17);
         }
     }
 

@@ -18,6 +18,9 @@ public class MenuTypesRegistry {
     public static final RegistryObject<MenuType<PickaxeSimulatorMenu>> PICKAXE_SIMULATOR_MENU =
             registerMenuType(PickaxeSimulatorMenu::new, "pickaxe_simulator_menu");
 
+    public static final RegistryObject<MenuType<AsteroidMinerMenu>> ASTEROID_MINER_MENU =
+            registerMenuType(AsteroidMinerMenu::new, "asteroid_miner_menu");
+
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory,
                                                                                                   String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

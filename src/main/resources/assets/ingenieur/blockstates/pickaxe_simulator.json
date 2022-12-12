@@ -1,18 +1,18 @@
 {
   "variants": {
     "facing=east": {
-      "model": "minecraft:block/furnace",
+      "model": "ingenieur:block/pickaxe_simulator",
       "y": 90
     },
     "facing=north": {
-      "model": "minecraft:block/furnace"
+      "model": "ingenieur:block/pickaxe_simulator"
     },
     "facing=south": {
-      "model": "minecraft:block/furnace",
+      "model": "ingenieur:block/pickaxe_simulator",
       "y": 180
     },
     "facing=west": {
-      "model": "minecraft:block/furnace",
+      "model": "ingenieur:block/pickaxe_simulator",
       "y": 270
     }
   }

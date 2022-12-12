@@ -1,8 +1,8 @@
 package com.mike.ingenieur.screen;
 
 import com.mike.ingenieur.block.BlockRegistry;
+import com.mike.ingenieur.block.entity.AsteroidMinerBlockEntity;
 import com.mike.ingenieur.block.entity.PickaxeSimulatorBlockEntity;
-import net.minecraft.commands.arguments.coordinates.Coordinates;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -13,21 +13,19 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
-import java.awt.*;
-
-public class PickaxeSimulatorMenu extends AbstractContainerMenu {
-    public final PickaxeSimulatorBlockEntity blockEntity;
+public class AsteroidMinerMenu extends AbstractContainerMenu {
+    public final AsteroidMinerBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public PickaxeSimulatorMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+    public AsteroidMinerMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public PickaxeSimulatorMenu(int id, Inventory inv, BlockEntity entity, ContainerData data){
-        super(MenuTypesRegistry.PICKAXE_SIMULATOR_MENU.get(), id);
+    public AsteroidMinerMenu(int id, Inventory inv, BlockEntity entity, ContainerData data){
+        super(MenuTypesRegistry.ASTEROID_MINER_MENU.get(), id);
         checkContainerSize(inv, 1);
-        blockEntity = (PickaxeSimulatorBlockEntity) entity;
+        blockEntity = (AsteroidMinerBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
 
@@ -35,7 +33,12 @@ public class PickaxeSimulatorMenu extends AbstractContainerMenu {
         this.addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 80, 35));
+            this.addSlot(new SlotItemHandler(handler, 0, 12, 35));
+            for(int i = 0; i < 3; i++){
+                for(int j = 0; j<3; j++){
+                    this.addSlot(new SlotItemHandler(handler, j + i * 3 + 1, 62 + (j* 18), 16 + (i * 18)));
+                }
+            }
         });
 
         this.addDataSlots(data);
@@ -53,7 +56,7 @@ public class PickaxeSimulatorMenu extends AbstractContainerMenu {
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
 
-    public PickaxeSimulatorBlockEntity getBlockEntity() {
+    public AsteroidMinerBlockEntity getBlockEntity() {
         return this.blockEntity;
     }
 
@@ -73,7 +76,7 @@ public class PickaxeSimulatorMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 1;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 10;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
@@ -111,7 +114,7 @@ public class PickaxeSimulatorMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                player, BlockRegistry.PICKAXE_SIMULATOR.get());
+                player, BlockRegistry.ASTEROID_MINER.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory){

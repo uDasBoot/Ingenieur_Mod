@@ -1,5 +1,6 @@
 package com.mike.ingenieur.block.custom;
 
+import com.mike.ingenieur.block.entity.AsteroidMinerBlockEntity;
 import com.mike.ingenieur.block.entity.BlockEntityRegistry;
 import com.mike.ingenieur.block.entity.PickaxeSimulatorBlockEntity;
 import net.minecraft.core.BlockPos;
@@ -16,16 +17,16 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-public class PickaxeSimulatorBlock extends IngenieurEntityBlock {
+public class AsteroidMinerBlock extends IngenieurEntityBlock {
 
-    public PickaxeSimulatorBlock(Properties props) {
-        super(props);
+    public AsteroidMinerBlock(Properties pProperties) {
+        super(pProperties);
     }
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new PickaxeSimulatorBlockEntity(pos, state);
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return new AsteroidMinerBlockEntity(pPos, pState);
     }
 
     @Override
@@ -33,8 +34,8 @@ public class PickaxeSimulatorBlock extends IngenieurEntityBlock {
                                  Player player, InteractionHand hand, BlockHitResult result) {
         if(!level.isClientSide()){
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if(blockEntity instanceof PickaxeSimulatorBlockEntity){
-                NetworkHooks.openScreen(((ServerPlayer) player), (PickaxeSimulatorBlockEntity) blockEntity, pos);
+            if(blockEntity instanceof AsteroidMinerBlockEntity){
+                NetworkHooks.openScreen(((ServerPlayer) player), (AsteroidMinerBlockEntity) blockEntity, pos);
             } else {
                 throw new IllegalStateException("Container Provider missing for Pickaxe Simulator!");
             }
@@ -46,7 +47,7 @@ public class PickaxeSimulatorBlock extends IngenieurEntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
                                                                   BlockEntityType<T> type) {
-        return createTickerHelper(type, BlockEntityRegistry.PICKAXE_SIMULATOR.get(),
-                PickaxeSimulatorBlockEntity::tick);
+        return createTickerHelper(type, BlockEntityRegistry.ASTEROID_MINER.get(),
+                AsteroidMinerBlockEntity::tick);
     }
 }
